@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.31911.260
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BogZaplac.Api", "BogZaplac.Api\BogZaplac.Api.csproj", "{53740F4B-1728-4A22-A8FC-7C1459AAF841}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53740F4B-1728-4A22-A8FC-7C1459AAF841}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53740F4B-1728-4A22-A8FC-7C1459AAF841}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53740F4B-1728-4A22-A8FC-7C1459AAF841}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53740F4B-1728-4A22-A8FC-7C1459AAF841}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BA8669F2-A7B0-4688-8FA4-F6AE352390B7}
+	EndGlobalSection
+EndGlobal
