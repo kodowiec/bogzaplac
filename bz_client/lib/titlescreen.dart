@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'history.dart';
 
 class TitleScreen extends StatefulWidget {
   const TitleScreen({Key? key}) : super(key: key);
@@ -30,7 +31,7 @@ class _TitleScreenState extends State<TitleScreen> {
                   children: [
                     const Text("codename BogZaplac", style: TextStyle(fontSize: 25), textAlign: TextAlign.center),
                     ElevatedButton(onPressed: () {}, child: const Text("dodaj")),
-                    ElevatedButton(onPressed: () {}, child: const Text("historia")),
+                    ElevatedButton(onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context) => const HistoryScreen())); }, child: const Text("historia")),
                   ],
                 ),
               ),
