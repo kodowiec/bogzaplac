@@ -1,3 +1,4 @@
+import 'package:bogzaplac/main.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 
@@ -40,7 +41,7 @@ class _HistoryScreenState extends State<HistoryScreen>
 
   Future<List<HistoryItem>> getList() async
   {
-    Response response = await Dio().get('http://localhost:2137/history');
+    Response response = await Dio().get((connectionSettings.isHttps? "https" : "http") + '://${connectionSettings.host}:${connectionSettings.port}/history');
     return (response.data as List).map((e) => HistoryItem.fromJson(e)).toList();
   }
 
