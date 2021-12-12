@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'titlescreen.dart';
+import 'settings.dart';
 
+ConnectionSettings connectionSettings = ConnectionSettings();
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
