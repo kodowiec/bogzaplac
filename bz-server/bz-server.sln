@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.31911.260
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BogZaplac.Api", "BogZaplac.Api\BogZaplac.Api.csproj", "{53740F4B-1728-4A22-A8FC-7C1459AAF841}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BogZaplac.Api", "BogZaplac.Api\BogZaplac.Api.csproj", "{53740F4B-1728-4A22-A8FC-7C1459AAF841}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CF22E50F-B0A3-470A-87BE-04CD52B1B793} = {CF22E50F-B0A3-470A-87BE-04CD52B1B793}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BogZaplac.Database", "BogZaplac.Database\BogZaplac.Database.csproj", "{CF22E50F-B0A3-470A-87BE-04CD52B1B793}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{53740F4B-1728-4A22-A8FC-7C1459AAF841}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53740F4B-1728-4A22-A8FC-7C1459AAF841}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53740F4B-1728-4A22-A8FC-7C1459AAF841}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF22E50F-B0A3-470A-87BE-04CD52B1B793}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF22E50F-B0A3-470A-87BE-04CD52B1B793}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF22E50F-B0A3-470A-87BE-04CD52B1B793}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF22E50F-B0A3-470A-87BE-04CD52B1B793}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

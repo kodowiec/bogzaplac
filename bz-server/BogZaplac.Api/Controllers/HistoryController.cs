@@ -16,24 +16,11 @@ namespace BogZaplac.Api.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get([FromServices] BogZaplac.Database.Client dbClient)
         {
-            /* temp - prototyping */
-            List<HistoryItem> historyItems = new List<HistoryItem>();
+            List<BogZaplac.Database.HistoryItem> historyItems = dbClient.GetHistoryItems(100, 0).List;
 
-            for (int i = 0; i < 10; i++)
-            {
-                var rnd = new Random();
-                HistoryItem item = new HistoryItem();
-                item.ID = i;
-                item.Date = DateTime.Now.Ticks;
-                item.Username = $"user{i}";
-                item.Cost = (((double) rnd.Next(10000)) / 100).ToString();
-                item.ReceiptID = rnd.Next(0, 100);
-                historyItems.Add(item);
-            }
-
-            return ApiResponse.Json(HttpStatusCode.OK, historyItems.OrderByDescending(x => x.Date).ToList());
+            return ApiResponse.Json(HttpStatusCode.OK, historyItems.OrderByDescending(x => x.ID).ToList());
         }
     }
 }
