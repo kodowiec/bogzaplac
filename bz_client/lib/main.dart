@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'titlescreen.dart';
+import 'screens/titlescreen.dart';
 import 'settings.dart';
 
 ConnectionSettings connectionSettings = ConnectionSettings();
