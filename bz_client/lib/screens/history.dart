@@ -8,14 +8,14 @@ class HistoryItem
   final String username;
   final String date;
   final String cost;
-  final int receiptID;
+  final int? receiptID;
 
   HistoryItem({
       required this.id,
       required this.username,
       required this.date,
       required this.cost,
-      required this.receiptID
+      this.receiptID
   });
 
   factory HistoryItem.fromJson(Map<String, dynamic> json) => HistoryItem(
