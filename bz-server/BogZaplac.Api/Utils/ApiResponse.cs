@@ -14,5 +14,8 @@ namespace BogZaplac.Api.Utils
                 ContentType = "application/json"
             };
         }
+
+        public static IActionResult NotFound() => new ContentResult { StatusCode = (int) HttpStatusCode.NotFound };
+        public static IActionResult NotModified() => new ContentResult { StatusCode = (int)HttpStatusCode.NoContent };
     }
 }
