@@ -16,16 +16,17 @@ namespace BogZaplac.Database
             return Connection.Query<HistoryItem>($"SELECT * FROM history WHERE ID = {id}").FirstOrDefault();
         }
 
-        public uint? PutHistoryWithImage(HistoryItemWithImage item)
+        public HistoryItem? PutHistoryWithImage(HistoryItemWithImage item)
         {
             var receipt = PutReceipt(new Receipt(item.Username, item.Image));
-            item.ReceiptID = (int?) receipt;
-            return (receipt == 0)? null : PutHistoryItem(item);
+            item.ReceiptID = receipt?.ID;
+            return (receipt == null)? null : PutHistoryItem(item);
         }
 
-        public uint PutHistoryItem(HistoryItem item)
+        public HistoryItem? PutHistoryItem(HistoryItem item)
         {
-            return Connection.Query<uint>("INSERT INTO history (Username, Cost, Date, ReceiptID) VALUES (@Username, @Cost, @Date, @ReceiptID); select LAST_INSERT_ID();", item).First();
+            var id = Connection.Query<uint>("INSERT INTO history (Username, Cost, Date, ReceiptID) VALUES (@Username, @Cost, @Date, @ReceiptID); select LAST_INSERT_ID();", item).First();
+            return Connection.Query<HistoryItem>($"SELECT * FROM history WHERE ID ={id};").FirstOrDefault();
         }
 
         public Receipt? GetReceipt(int id)
@@ -33,9 +34,10 @@ namespace BogZaplac.Database
             return Connection.Query<Receipt>($"SELECT * FROM receipts WHERE ID={id}").FirstOrDefault();
         }
 
-        public uint PutReceipt(Receipt receipt)
+        public Receipt? PutReceipt(Receipt receipt)
         {
-            return Connection.Query<uint>("INSERT INTO receipts (Username, Image) VALUES (@Username, @Image); select LAST_INSERT_ID();", receipt).First();
+            var id = Connection.Query<uint>("INSERT INTO receipts (Username, Image) VALUES (@Username, @Image); select LAST_INSERT_ID();", receipt).First();
+            return Connection.Query<Receipt>($"SELECT * FROM receipts WHERE ID={id};").FirstOrDefault();
         }
     }
 }

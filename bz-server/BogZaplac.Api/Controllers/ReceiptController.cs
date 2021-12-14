@@ -20,7 +20,7 @@ namespace BogZaplac.Api.Controllers
         public IActionResult Post([FromServices] BogZaplac.Database.Client dbClient, [FromForm] ReceiptUpload upload)
         {
             var rec = dbClient.PutReceipt(new Database.Receipt(upload.Username, GetByteArrayFromImage.Get(upload.image)));
-            return (rec != 0)? ApiResponse.Json(HttpStatusCode.Created, rec) : ApiResponse.NotModified();
+            return (rec != null)? ApiResponse.Json(HttpStatusCode.Created, rec) : ApiResponse.NotModified();
         }
     }
 }
