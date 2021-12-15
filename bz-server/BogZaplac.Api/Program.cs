@@ -6,7 +6,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-BogZaplac.Database.Client dbClient = new Client("localhost", 3306, "bogzaplac", "user", "pass"); //TODO: move to config file
+builder.Configuration.AddJsonFile("config.json");
+
+BogZaplac.Database.Client dbClient = new Client(
+    builder.Configuration["Database:hostname"], 
+    Int32.Parse(builder.Configuration["Database:port"]), 
+    builder.Configuration["Database:dbname"], 
+    builder.Configuration["Database:username"], 
+    builder.Configuration["Database:password"]);
 
 builder.Services.AddSingleton<BogZaplac.Database.Client>(x => dbClient);
 
