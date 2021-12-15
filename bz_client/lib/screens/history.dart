@@ -1,4 +1,5 @@
 import 'package:bogzaplac/main.dart';
+import 'package:bogzaplac/screens/details.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 
@@ -95,7 +96,7 @@ class _HistoryScreenState extends State<HistoryScreen>
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: ElevatedButton(
                           key: Key(element.id.toString()),
-                          onPressed: () { /* TODO: details page with receipt photo */ },
+                          onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context) => DetailsScreen(item: element))); },
                           style: ElevatedButton.styleFrom(
                             elevation: 2,
                             primary: Colors.indigoAccent,
