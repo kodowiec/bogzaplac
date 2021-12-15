@@ -1,4 +1,5 @@
 import 'package:bogzaplac/main.dart';
+import 'package:bogzaplac/screens/details.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 
@@ -82,6 +83,7 @@ class _HistoryScreenState extends State<HistoryScreen>
                 future: _items,
                 builder: (context, snapshot) {
                   return RefreshIndicator(child: (snapshot.hasData) ? GridView.builder(
+                    padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
                       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 1,
                           mainAxisExtent: 95,
@@ -91,20 +93,20 @@ class _HistoryScreenState extends State<HistoryScreen>
                       itemCount: snapshot.data?.length,
                       itemBuilder: (context, index) {
                         HistoryItem element = snapshot.data![index];
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: ElevatedButton(
+                        return ElevatedButton(
                           key: Key(element.id.toString()),
-                          onPressed: () { /* TODO: details page with receipt photo */ },
+                          onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context) => DetailsScreen(item: element))); },
                           style: ElevatedButton.styleFrom(
                             elevation: 2,
                             primary: Colors.indigoAccent,
-                            padding: const EdgeInsets.fromLTRB(20, 30, 00, 30)
+                            padding: const EdgeInsets.fromLTRB(20, 10, 0, 10)
                           ),
                           child: Row(children: [
                             Expanded(
-                              flex: 3,
-                              child: Column(children: [
+                              flex: 4,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
                                   Row(children: [
                                     Text(element.username,
                                         style: const TextStyle(
@@ -117,15 +119,14 @@ class _HistoryScreenState extends State<HistoryScreen>
                                 ]),
                             ),
                             Expanded(
-                              flex: 1,
-                              child: Text(element.cost + " zł  ",
+                              flex: 2,
+                              child: Text(element.cost + " zł",
                                     textAlign: TextAlign.center,
                                     style: const TextStyle(
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 20.0)),
+                                        fontSize: 18.0)),
                               ),
                           ]),
-                        ),
                         );
                       })
                   : const Center(child: CircularProgressIndicator()),
