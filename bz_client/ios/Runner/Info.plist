@@ -24,6 +24,10 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>used for that whole take a photo of receipt thing</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>that's when you want to get a photo of receipt from your gallery aka photo library </string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
