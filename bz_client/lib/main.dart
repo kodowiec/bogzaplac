@@ -3,6 +3,7 @@ import 'screens/titlescreen.dart';
 import 'settings.dart';
 
 ConnectionSettings connectionSettings = ConnectionSettings();
+String appSetUser = "flutterTest"; //TODO: user specified
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
