@@ -34,7 +34,7 @@ class _TitleScreenState extends State<TitleScreen> {
                   ),
                   children: [
                     const Text("codename BogZaplac", style: TextStyle(fontSize: 25), textAlign: TextAlign.center),
-                    ElevatedButton(onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context) => NewEntryScreen(appSetUser: appSetUser))); }, child: const Text("dodaj")),
+                    ElevatedButton(onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context) => NewEntryScreen(appSetUser: userSettings.username))); }, child: const Text("dodaj")),
                     ElevatedButton(onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context) => const HistoryScreen())); }, child: const Text("historia")),
                   ],
                 ),

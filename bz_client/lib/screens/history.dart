@@ -1,34 +1,10 @@
 import 'package:bogzaplac/main.dart';
+import 'package:bogzaplac/classes/apimodels.dart';
 import 'package:bogzaplac/screens/details.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 
-class HistoryItem 
-{
-  final int id;
-  final String username;
-  final String date;
-  final String cost;
-  final int? receiptID;
-
-  HistoryItem({
-      required this.id,
-      required this.username,
-      required this.date,
-      required this.cost,
-      this.receiptID
-  });
-
-  factory HistoryItem.fromJson(Map<String, dynamic> json) => HistoryItem(
-        id: json['ID'],
-        username: json['Username'],
-        date: json['Date'],
-        cost: json['Cost'],
-        receiptID: json['ReceiptID'],
-      );
-}
-
-class HistoryScreen extends StatefulWidget 
+class HistoryScreen extends StatefulWidget
 {
   const HistoryScreen({Key? key}) : super(key: key);
 
@@ -42,7 +18,7 @@ class _HistoryScreenState extends State<HistoryScreen>
 
   Future<List<HistoryItem>> getList() async
   {
-    Response response = await Dio().get((connectionSettings.isHttps? "https" : "http") + '://${connectionSettings.host}:${connectionSettings.port}/history');
+    Response response = await Dio().get(userSettings.connection.url + '/history');
     return (response.data as List).map((e) => HistoryItem.fromJson(e)).toList();
   }
 

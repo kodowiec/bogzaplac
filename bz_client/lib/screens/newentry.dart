@@ -1,7 +1,8 @@
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
-import 'pushentry.dart';
+import 'package:bogzaplac/screens/pushentry.dart';
+import 'package:bogzaplac/classes/apimodels.dart';
 
 class NewEntryScreen extends StatefulWidget {
   const NewEntryScreen({Key? key, required this.appSetUser}) : super(key: key);
