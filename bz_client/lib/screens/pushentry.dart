@@ -1,22 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:bogzaplac/classes/apimodels.dart';
 import 'package:bogzaplac/main.dart';
-
-class SubmitItem
-{
-  final String username, cost;
-  final String? date;
-  final XFile? image;
-
-  SubmitItem({
-      required this.username,
-      this.date,
-      required this.cost,
-      this.image
-  });
-}
 
 class PushedEntryScreen extends StatefulWidget {
   const PushedEntryScreen({Key? key, required this.pubItem}) : super(key: key);
@@ -34,7 +20,7 @@ class _PushedEntryScreenState extends State<PushedEntryScreen> {
       "Image": ((widget.pubItem.image != null)? await MultipartFile.fromFile(widget.pubItem.image!.path) : null)
     });
 
-    Response response = await Dio().post((connectionSettings.isHttps? "https" : "http") + '://${connectionSettings.host}:${connectionSettings.port}/history', data: data);
+    Response response = await Dio().post(userSettings.connection.url + '/history', data: data);
     return response.data;
   }
 

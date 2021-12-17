@@ -1,18 +1,8 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'history.dart';
+import 'package:bogzaplac/classes/apimodels.dart';
 import 'package:bogzaplac/main.dart';
-
-class Receipt
-{
-  final int id;
-  final String image;
-
-  Receipt({required this.id, required this.image});
-
-  factory Receipt.fromJson(Map<String, dynamic> json) => Receipt(id: json['ID'], image: json['image']);
-}
 
 class DetailsScreen extends StatefulWidget
 {
@@ -30,8 +20,7 @@ class _DetailsScreenState extends State<DetailsScreen>
 
   Future<Receipt> getImage(HistoryItem item) async
   {
-    Response response = await Dio().get((connectionSettings.isHttps ? "https" : "http") +
-        '://${connectionSettings.host}:${connectionSettings.port}/receipt/${item.receiptID}');
+    Response response = await Dio().get(userSettings.connection.url + '/receipt/${item.receiptID}');
     return Receipt.fromJson(response.data);
   }
 
