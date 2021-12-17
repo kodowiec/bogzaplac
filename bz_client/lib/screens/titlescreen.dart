@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'history.dart';
 import 'newentry.dart';
 import 'package:bogzaplac/main.dart';
@@ -40,6 +41,7 @@ class _TitleScreenState extends State<TitleScreen> {
                 ),
               ),
               const Expanded(flex: 1, child: Text("")),
+              (kDebugMode)? Text("bz_client  debug build\nserver: ${userSettings.connection.url}\nusername: ${userSettings.username} ") : const SizedBox(height: 0,),
             ],
           ),
         ),
