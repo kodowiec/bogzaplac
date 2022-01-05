@@ -1,3 +1,4 @@
+import 'package:bogzaplac/screens/setup.dart';
 import 'package:flutter/material.dart';
 import 'screens/titlescreen.dart';
 import 'classes/settings.dart';
@@ -13,7 +14,7 @@ void main() async
   runApp(const MyApp());
 }
 
-void initSettings()
+bool populateSettings()
 {
   userSettings = UserSettings(username: "err_def_username", connection: ConnectionSettings());
   userSettings.username           = prefs.getString("username")   ?? "err_def_username";
@@ -22,6 +23,7 @@ void initSettings()
   userSettings.connection.isHttps = prefs.getBool("serverHttps")  ?? false;
   userSettings.isFirstRun         = prefs.getBool("isFirstRun")   ?? true;
   userSettings.connection.buildUrl();
+  return userSettings.isFirstRun;
 }
 
 class MyApp extends StatelessWidget {
@@ -29,11 +31,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    initSettings();
     return MaterialApp(
       title: 'Bóg Zapłać',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: const TitleScreen(),
+      home: populateSettings()? const SetupScreen() : const TitleScreen(),
     );
   }
 }
