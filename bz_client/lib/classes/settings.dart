@@ -17,6 +17,7 @@ class ConnectionSettings
 class UserSettings
 {
   String username;
+  bool isFirstRun = true;
   ConnectionSettings connection;
 
   UserSettings({

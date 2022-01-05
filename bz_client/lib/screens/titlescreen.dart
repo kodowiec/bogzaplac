@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'history.dart';
 import 'newentry.dart';
 import 'package:bogzaplac/main.dart';
+import 'package:bogzaplac/screens/setup.dart';
 
 class TitleScreen extends StatefulWidget {
   const TitleScreen({Key? key}) : super(key: key);
@@ -20,9 +21,9 @@ class _TitleScreenState extends State<TitleScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Expanded(flex: 1, child: Text("")),
+              const Expanded(flex: 2, child: Text("")),
               Expanded(
-                flex: 2,
+                flex: 4,
                 child: GridView(
                   shrinkWrap: true,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -36,6 +37,7 @@ class _TitleScreenState extends State<TitleScreen> {
                     const Text("codename BogZaplac", style: TextStyle(fontSize: 25), textAlign: TextAlign.center),
                     ElevatedButton(onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context) => NewEntryScreen(appSetUser: userSettings.username))); }, child: const Text("dodaj")),
                     ElevatedButton(onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context) => const HistoryScreen())); }, child: const Text("historia")),
+                    ElevatedButton(onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context) => const SetupScreen())); }, child: const Text("zmien ustawienia serwera"))
                   ],
                 ),
               ),
