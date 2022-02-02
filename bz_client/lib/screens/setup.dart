@@ -15,7 +15,7 @@ class _SetupScreenState extends State<SetupScreen>
 
   void saveSettings()
   {
-    prefs.setString("username", _username);
+    if(_username != "err_def_username") prefs.setString("username", _username);
     prefs.setString("hostname", _host);
     prefs.setString("port", _port);
     prefs.setBool("serverHttps", _isHttps);
@@ -32,6 +32,10 @@ class _SetupScreenState extends State<SetupScreen>
   @override
   Widget build(BuildContext context)
   {
+    _host = (userSettings.connection.host != "localhost")? userSettings.connection.host : "";
+    _port = userSettings.connection.port;
+    if (userSettings.username != "err_def_username") _username = userSettings.username;
+    
     return Scaffold(
       body: Center(
         child: Column(
@@ -47,7 +51,7 @@ class _SetupScreenState extends State<SetupScreen>
                 enableIMEPersonalizedLearning: false,
                 enableSuggestions: false,
                 textAlign: TextAlign.center,
-                initialValue: (userSettings.connection.host != "localhost")? userSettings.connection.host : null,
+                initialValue: _host,
               ),
             ),
           const Text("\n\nport serwera: "),
@@ -61,7 +65,7 @@ class _SetupScreenState extends State<SetupScreen>
                 enableSuggestions: false,
                 textAlign: TextAlign.center,
                 keyboardType: const TextInputType.numberWithOptions(decimal: false, signed: false),
-                initialValue: userSettings.connection.port,
+                initialValue: _port,
               ),
             ),
           userSettings.isFirstRun? const Text("\n\nnazwa uzytkownika: ") : const SizedBox(height: 0,),
